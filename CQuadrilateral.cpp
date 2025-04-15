@@ -1,6 +1,5 @@
 #include "CQuadrilateral.h"
 
-
 /// @brief default constructor 
 Quadrilateral::Quadrilateral() {
 
@@ -44,11 +43,45 @@ void Quadrilateral::SetSides(float s1, float s2, float s3, float s4) {
 
 } 
 
+/// @brief sets the value of the four angles 
+/// @param a0 side 1 
+/// @param a1 side 2 
+/// @param a2 side 3
+/// @param a3 side 4 
+void Quadrilateral::SetAngles(float a0, float a1, float a2, float a3) {
+	
+	angles[0] = a0;
+	angles[1] = a1;
+	angles[2] = a2;
+	angles[3] = a3;
+
+	if (!Check())
+		WarningMessage("Quadrilateral - the sum of angles should be 360");	
+	
+	return;
+
+} 
+
+void Quadrilateral::SetGridCoord(coord_type Coord) {
+	
+	if (Coord.x < 0 || Coord.y < 0) {
+		WarningMessage("SetGridCoord - the coordinates cannot be negative");
+		gridCoord.x = 0;
+		gridCoord.y = 0;
+		return;
+	}
+	
+	gridCoord.x = Coord.x;
+	gridCoord.y = Coord.y;
+}
+
 /// @brief overload of operator = 
 /// @param o reference to the object on the right side of the operator 
 /// @return reference to the object on the left side of the operator 
 Quadrilateral& Quadrilateral::operator=(const Quadrilateral &o) { 
 
+	cout << "Quadrilateral - operator =" << endl;
+	Init(o);
 	return *this;
 	
 }
@@ -72,7 +105,7 @@ void Quadrilateral::Init() {
 
 
 /// @brief initialization of the object as a copy of an object 
-/// @param o reference to the object that should be copied 
+/// @param r reference to the object that should be copied 
 void Quadrilateral::Init(const Quadrilateral &o) {
 	Init();
 	
@@ -176,6 +209,7 @@ void Quadrilateral::WarningMessage(const char *string) {
 void Quadrilateral::Dump() {
 	
 	cout << endl;
+	cout << "Reference point on the grid: " << gridCoord.x << "," << gridCoord.y << endl; 
 	cout << "Sides = " << sides[0] << "; " << sides[1] << "; " << sides[2] << "; " << sides[3] << "; " << endl;
 	cout << "Angles = " << angles[0] << "; " << angles[1] << "; " << angles[2] << "; " << angles[3] << "; " << endl;
 	cout << "Perimeter = " << GetPerimeter() << endl;
