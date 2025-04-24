@@ -41,13 +41,7 @@ public:
 	/// @{
 	Quadrilateral();
 	Quadrilateral(const Quadrilateral &o);
-	~Quadrilateral();
-	/// @}
-	
-	/// @name OPERATORS
-	/// @{
-	Quadrilateral& operator=(const Quadrilateral &o); 
-	bool operator==(const Quadrilateral &o);
+	virtual ~Quadrilateral();
 	/// @}
 	
 	/// @name BASIC HANDLING
@@ -61,6 +55,7 @@ public:
 	/// @name GETTERS
 	/// @{
 	float GetPerimeter();
+	virtual float GetArea() = 0;
 	void GetSides(float &s0, float &s1, float &s2, float &s3);
 	void GetAngles(float &a0, float &a1, float &a2, float &a3);
 	void GetGridCoord(coord_type &Coord);
@@ -70,7 +65,7 @@ public:
 	/// @{
 	void ErrorMessage(const char *string); 
 	void WarningMessage(const char *string);
-	void Dump();
+	virtual void Dump();
 	/// @}
 
 };

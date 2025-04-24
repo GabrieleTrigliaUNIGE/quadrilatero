@@ -75,26 +75,6 @@ void Quadrilateral::SetGridCoord(coord_type Coord) {
 	gridCoord.y = Coord.y;
 }
 
-/// @brief overload of operator = 
-/// @param o reference to the object on the right side of the operator 
-/// @return reference to the object on the left side of the operator 
-Quadrilateral& Quadrilateral::operator=(const Quadrilateral &o) { 
-
-	cout << "Quadrilateral - operator =" << endl;
-	Init(o);
-	return *this;
-	
-}
-
-/// @brief overload of operator == 
-/// @param o reference to the object on the right side of the operator 
-/// @return always false 
-bool Quadrilateral::operator==(const Quadrilateral &o) {
-
-	return false;
-}
-
-
 /// @brief default initialization of the object
 void Quadrilateral::Init() {
 	gridCoord.x=0;
@@ -207,13 +187,12 @@ void Quadrilateral::WarningMessage(const char *string) {
 
 /// @brief for debugging: all about the object
 void Quadrilateral::Dump() {
-	
+	cout << "Quadrilateral Dump" << endl;
 	cout << endl;
 	cout << "Reference point on the grid: " << gridCoord.x << "," << gridCoord.y << endl; 
 	cout << "Sides = " << sides[0] << "; " << sides[1] << "; " << sides[2] << "; " << sides[3] << "; " << endl;
 	cout << "Angles = " << angles[0] << "; " << angles[1] << "; " << angles[2] << "; " << angles[3] << "; " << endl;
-	cout << "Perimeter = " << GetPerimeter() << endl;
+	// cout << "Perimeter = " << GetPerimeter() << endl;
 	cout << endl;
-
 }
 

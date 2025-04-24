@@ -181,7 +181,9 @@ void Rectangle::Dump() {
 	cout << "Width = " << sides[0] << endl;
 	cout << "Heigth = " << sides[1] << endl;
 	cout << "Area = " << GetArea() << endl;
-	
+	cout << "Perimeter = " << GetPerimeter() << endl;
+	cout << "Area = " << GetArea() << endl;
+
 	Quadrilateral::Dump();
 	
 	cout << endl;
